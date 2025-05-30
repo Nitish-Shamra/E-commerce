@@ -1,0 +1,118 @@
+.catagory-banner{
+    display: block;
+    margin: 30px auto;
+    width: 90%;
+
+}
+.shopcatagory-indexshort{
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 70px;
+    align-items: center;
+}
+.shopcatagory-short{
+    padding: 10px 20px;
+    border-radius: 40px;
+    border: 1px solid #888;
+}
+.shopcatagory-indexshort p span{
+    font-weight: 600;
+}
+.shopcatagory-product{
+    margin: 20px 70px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    row-gap: 80px;   
+}
+.shopcatagory-loadmore{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 100px auto;
+    width: 230px;
+    height: 65px;
+    border-radius: 75px;
+    background: #ededee;
+    color: #787878;
+    font-size: 15px;
+    font-weight: 500;
+}
+@media (max-width:1280px) {
+     .catagory-banner{
+        margin: 20px auto;
+        width: 85%;
+     } 
+     .shopcatagory-indexshort{
+        width: 85%;
+        margin: auto;
+     } 
+     .shopcatagory-short{
+        padding: 5px 10px;
+        font-size: 14px;
+     }  
+     .shopcatagory-indexshort p{
+        font-size: 14px;
+     }
+     .shopcatagory-product{
+        width: 85%;
+        margin: 10px auto;
+        gap: 40px;
+     }
+     .shopcatagory-product .item{
+        margin: auto;
+
+     }
+     .shopcatagory-loadmore{
+        margin: 100px auto;
+        width: 200px;
+        height: 60px;
+        font-size: 16px;
+     }
+    }
+@media (max-width:800px) {
+     .catagory-banner{
+        margin: 20px auto;
+        width: 90%;
+     } 
+     .shopcatagory-indexshort{
+        width: 90%;
+        margin: auto;
+     } 
+    
+     .shopcatagory-loadmore{
+        margin: 60px auto;
+        width: 150px;
+        height: 40px;
+        font-size: 13px;
+     }
+}
+@media (max-width:500px) {
+     .catagory-banner{
+        margin: 20px auto;
+        width: 90%;
+     } 
+     .shopcatagory-indexshort{
+        width: 90%;
+        margin: auto;
+     } 
+     .shopcatagory-short{
+        padding: 5px 8px;
+        font-size: 8px;
+     }  
+     .shopcatagory-indexshort p{
+        font-size: 10px;
+     }
+     .shopcatagory-product{
+       grid-template-columns: 1fr 1fr;
+     }
+     .shopcatagory-product .item{
+        margin: auto;
+
+     }
+     .shopcatagory-loadmore{
+        margin: 40px auto;
+        width: 120px;
+        height: 30px;
+        font-size: 10px;
+     }
+}

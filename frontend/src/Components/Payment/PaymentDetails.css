@@ -1,0 +1,411 @@
+/* PaymentDetails-Dropdown.css */
+.shipping-details{
+  max-width: 750px;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.shipping-details h2{
+  color: #495057;
+  margin-bottom: 15px;
+}
+.shipping-details strong{
+  color: #495057;
+  margin: 2px;
+ 
+}
+.total-shipping-price{
+  font-size: 22px;
+  font-weight: 600;
+}
+.payment-details {
+  max-width: 750px;
+  margin: 40px auto;
+  padding: 25px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-bottom: 100px;
+}
+
+.payment-details h3 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 30px;
+  font-size: 28px;
+  font-weight: 700;
+  position: relative;
+}
+
+.payment-details h3::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 2px;
+}
+
+/* Payment Options Container */
+.payment-option {
+  margin-bottom: 20px;
+}
+
+.payment-option label {
+  display: flex;
+  align-items: center;
+  padding: 18px 20px;
+  border: 2px solid #e8ecef;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: #495057;
+  position: relative;
+  overflow: hidden;
+}
+
+.payment-option label::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transition: left 0.5s;
+}
+
+.payment-option label:hover::before {
+  left: 100%;
+}
+
+.payment-option label:hover {
+  border-color: #667eea;
+  background: linear-gradient(135deg, #f0f2ff 0%, #e6e9ff 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.2);
+}
+
+.payment-option input[type="radio"] {
+  margin-right: 15px;
+  transform: scale(1.3);
+  accent-color: #667eea;
+}
+
+/* Selected state - using :has() and fallback */
+.payment-option input[type="radio"]:checked {
+  accent-color: #667eea;
+}
+
+.payment-option label:has(input[type="radio"]:checked) {
+  border-color: #667eea;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+}
+
+/* Fallback for browsers that don't support :has() */
+.payment-option.selected label {
+  border-color: #667eea;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+}
+
+/* Dropdown Animation Styles */
+.paymentmethod-card,
+.paymentmethod-upi,
+.paymentmethod-banktransfer,
+.paymentmethod-cod {
+  margin-top: 15px;
+  padding: 25px;
+  border: 2px solid #e1e5e9;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  animation: slideDown 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: top;
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px) scaleY(0.8);
+    max-height: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+    max-height: 500px;
+  }
+}
+
+/* Input Field Styles */
+.paymentmethod-card input,
+.paymentmethod-upi input,
+.paymentmethod-banktransfer input {
+  width: 100%;
+  padding: 15px 18px;
+  margin-bottom: 18px;
+  border: 2px solid #e1e5e9;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-sizing: border-box;
+  background-color: #ffffff;
+  color: #495057;
+}
+
+.paymentmethod-card input::placeholder,
+.paymentmethod-upi input::placeholder,
+.paymentmethod-banktransfer input::placeholder {
+  color: #9ca3af;
+  font-weight: 400;
+}
+
+.paymentmethod-card input:focus,
+.paymentmethod-upi input:focus,
+.paymentmethod-banktransfer input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
+  transform: translateY(-1px);
+  background-color: #fafafb;
+}
+
+/* Credit Card Layout */
+.card-number-container {
+  margin-bottom: 18px;
+}
+
+.card-number-container input {
+  margin-bottom: 0;
+}
+
+.expiry-cvv-container {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 18px;
+}
+
+.expiry-container {
+  display: flex;
+  gap: 10px;
+  flex: 1;
+}
+
+.cvv-container {
+  flex: 0 0 140px;
+}
+
+.cardholder-container {
+  margin-bottom: 18px;
+}
+
+.cardholder-container input {
+  margin-bottom: 0;
+}
+
+/* Specific input sizing */
+.paymentmethod-card input[placeholder="MM"] {
+  width: 70px;
+  flex: 0 0 70px;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.paymentmethod-card input[placeholder="YY"] {
+  width: 70px;
+  flex: 0 0 70px;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.paymentmethod-card input[placeholder="CVV"] {
+  width: 60%;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.paymentmethod-card input[placeholder="Card Number"],
+.paymentmethod-card input[placeholder="Card Holder Name"] {
+  width: 100%;
+}
+
+/* UPI and Bank Transfer specific styling */
+.paymentmethod-upi input[placeholder*="UPI"] {
+  max-width: 350px;
+}
+
+.paymentmethod-banktransfer input[placeholder="Account Number"] {
+  max-width: 280px;
+}
+
+.paymentmethod-banktransfer input[placeholder="IFSC Code"] {
+  max-width: 180px;
+}
+
+.paymentmethod-banktransfer input[placeholder*="Account Holder"] {
+  width: 100%;
+}
+
+/* COD Styling */
+.paymentmethod-cod {
+  text-align: center;
+}
+
+.paymentmethod-cod p {
+  font-size: 20px;
+  color: #28a745;
+  font-weight: 700;
+  margin: 0 0 20px 0;
+  padding: 20px;
+  background: linear-gradient(135deg, #d4f6dd 0%, #c8f2d4 100%);
+  border: 2px solid #a3d9a5;
+  border-radius: 10px;
+  position: relative;
+}
+
+.paymentmethod-cod p::before {
+  content: '✓';
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #28a745;
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* Payment Button */
+.payment-btn {
+  width: 80%;
+  padding: 16px 25px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.payment-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.payment-btn:hover::before {
+  left: 100%;
+}
+
+.payment-btn:hover {
+  background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+}
+
+.payment-btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .payment-details {
+    margin: 15px;
+    padding: 20px;
+  }
+  
+  .payment-details h3 {
+    font-size: 24px;
+    margin-bottom: 25px;
+  }
+  
+  .payment-option label {
+    padding: 15px 18px;
+    font-size: 15px;
+  }
+  
+  .paymentmethod-card input,
+  .paymentmethod-upi input,
+  .paymentmethod-banktransfer input {
+    padding: 12px 15px;
+    font-size: 15px;
+  }
+  
+  .expiry-cvv-container {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .expiry-container {
+    justify-content: center;
+  }
+  
+  .cvv-container {
+    flex: 1;
+  }
+  
+  .paymentmethod-card input[placeholder="MM"],
+  .paymentmethod-card input[placeholder="YY"] {
+    width: 80px;
+    flex: 0 0 80px;
+  }
+  
+  .payment-btn {
+    padding: 14px 20px;
+    font-size: 16px;
+  }
+}
+
+/* Form validation styles */
+.paymentmethod-card input:invalid,
+.paymentmethod-upi input:invalid,
+.paymentmethod-banktransfer input:invalid {
+  border-color: #3172d2;
+  animation: shake 0.3s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.paymentmethod-card input:valid,
+.paymentmethod-upi input:valid,
+.paymentmethod-banktransfer input:valid {
+  border-color: #27ae60;
+}
