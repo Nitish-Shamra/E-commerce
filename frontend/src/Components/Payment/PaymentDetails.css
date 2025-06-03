@@ -1,10 +1,11 @@
 /* PaymentDetails-Dropdown.css */
 .shipping-details{
-  max-width: 750px;
-  margin-bottom: 40px;
+  max-width: 800px;
+  margin: 80px 100px;
   display: flex;
   flex-direction: column;
-  gap: 1px;
+  align-items: flex-start;
+  gap: 5px;
 }
 .shipping-details h2{
   color: #495057;
@@ -12,12 +13,20 @@
 }
 .shipping-details strong{
   color: #495057;
-  margin: 2px;
+  margin: 3px;
  
 }
 .total-shipping-price{
   font-size: 22px;
   font-weight: 600;
+}
+.shipping-details-address{
+  display: flex;
+  gap: 8px;
+}
+.confirm-order-btn{
+  height: 35px;
+  margin-top: 10px;
 }
 .payment-details {
   max-width: 750px;
@@ -81,6 +90,10 @@
   height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
   transition: left 0.5s;
+}
+.payment-option .discount {
+  color: #27ae60;
+  margin-left: 15px;
 }
 
 .payment-option label:hover::before {

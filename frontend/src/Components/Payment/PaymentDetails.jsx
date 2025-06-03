@@ -4,7 +4,7 @@ import { ShopContext } from '../Context/ShopContext';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 function PaymentDetails() {
-    const {getTotalCartAmount} = useContext(ShopContext);
+    const { getTotalCartAmount, clearCart } = useContext(ShopContext);
     const navigate = useNavigate();
 
     const location = useLocation();
@@ -23,11 +23,11 @@ function PaymentDetails() {
         ifscCode: '',
     });
 
+    const [orderConfirmed, setOrderConfirmed] = useState(false);
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        alert(`Selected Payment Method: ${selectMethod}`);
-        navigate('/');
-        setSelectMethod('');
+        setOrderConfirmed(true);
         setFormData({
             cardNumber: '',
             expiryDateMM: '',
@@ -42,40 +42,45 @@ function PaymentDetails() {
         });
     };
 
+    const getPaymentDiscount = (method) =>{
+        switch (method) {
+            case 'credit':
+                return 10; // 10% discount for credit card payments
+                case 'upi':
+                    return 5; // 5% discount for UPI payments
+                    case 'banktransfer':
+                        return 3; // 3% discount for bank transfer payments
+                        default:
+                return 0; // No discount for cash on delivery
+
+        }
+    }
+
+    const totalAmount = getTotalCartAmount();
+    const discountPercentage = getPaymentDiscount(selectMethod);
+    const discountAmount = (totalAmount* discountPercentage) / 100;
+    const finalAmount = totalAmount - discountAmount  + (shippingData?.shippingMethod?.price || 0);
+     
+         
+
+    const handleConfirmOrder = () =>{
+        alert('Order Confirmed');
+        navigate('/')
+        clearCart(); // Clear the cart after order confirmation
+    }
     return (
         <div>
            
             <div className="payment-details">
-                <div className='shipping-details'>
-                 <h2>Confirm Shipping Details</h2>
-                 <p><strong>Name:</strong> {shippingData?.name}</p>
-                 <p><strong>Email:</strong> {shippingData?.email}</p>
-                 <p><strong>Address:</strong> {shippingData?.address}</p>
-                 <p><strong>City:</strong> {shippingData?.city} {shippingData?.zip}</p>
-                 
-                  <p><strong>Phone:</strong> {shippingData?.phone}</p>
-                 
-                 <p><strong>Shipping:</strong> Free</p>
-                 <p><strong>Subtotal:</strong>${getTotalCartAmount()}</p>
-                 <hr/>
-                 <p className='total-shipping-price'><strong>Total:</strong>${getTotalCartAmount()}</p>
-
-
-            </div>
-
+            
                 <h3>Select Payment Options</h3>
                 <form onSubmit={handleSubmit}>
                     <div className="payment-option">
                         <label>
-                            <input 
-                                type='radio' 
-                                name='payment-method' 
-                                value='credit' 
-                                
-                                onChange={(e) => setSelectMethod(e.target.value)} 
-                                required
-                            /> 
-                            Credit/Debit Card
+                            <input  type='radio' name='payment-method'  value='credit' 
+                            onChange={(e) => setSelectMethod(e.target.value)} 
+                                required /> 
+                            Credit/Debit Card  <p className='discount'>~10% discount</p>
                         </label>
                         
                         <label>
@@ -83,11 +88,10 @@ function PaymentDetails() {
                                 type='radio' 
                                 name='payment-method' 
                                 value='upi' 
-                                
                                 onChange={(e) => setSelectMethod(e.target.value)} 
                                 required
                             /> 
-                            UPI
+                            UPI <p className='discount'>~5% discount</p>
                         </label>
                         
                         <label>
@@ -95,27 +99,26 @@ function PaymentDetails() {
                                 type='radio' 
                                 name='payment-method' 
                                 value='banktransfer' 
-                               
                                 onChange={(e) => setSelectMethod(e.target.value)} 
                                 required
                             /> 
-                            Bank Transfer
+                            Bank Transfer <p className='discount'>~3% discount</p>
                         </label>
                         
                         <label>
                             <input 
                                 type='radio' 
                                 name='payment-method' 
-                                value='cod' 
-                                
+                                value='cod'    
                                 onChange={(e) => setSelectMethod(e.target.value)} 
                                 required
                             /> 
                             Cash on Delivery
                         </label>
                     </div>
-
-                    {selectMethod === 'credit' && (
+                  {!orderConfirmed && (
+                    <>
+                     {selectMethod === 'credit' && (
                         <div className="paymentmethod-card">
                             <div className="card-number-container">
                                 <input 
@@ -169,7 +172,7 @@ function PaymentDetails() {
                                 />
                             </div>
                             
-                            <button className='payment-btn' type='submit'>Confirm Payment</button>
+                            <button onClick={() => window.scrollTo(50, 500)} className='payment-btn' type='submit'>Confirm Payment</button>
                         </div>
                     )}
 
@@ -182,7 +185,7 @@ function PaymentDetails() {
                                 onChange={(e) => setFormData({ ...formData, upiId: e.target.value })} 
                                 required
                             />
-                            <button className='payment-btn' type='submit'>Confirm Payment</button>
+                            <button onClick={() => window.scrollTo(50, 500)} className='payment-btn' type='submit'>Confirm Payment</button>
                         </div>
                     )}
 
@@ -209,18 +212,42 @@ function PaymentDetails() {
                                 onChange={(e) => setFormData({ ...formData, accountHolderName: e.target.value })} 
                                 required
                             />
-                            <button className='payment-btn' type='submit'>Confirm Payment</button>
+                            <button onClick={() => window.scrollTo(50, 500)} className='payment-btn' type='submit'>Confirm Payment</button>
                         </div>
                     )}
 
                     {selectMethod === 'cod' && (
                         <div className="paymentmethod-cod">
                             <p>Cash on Delivery selected</p>
-                            <button className='payment-btn' type='submit'>Confirm Order</button>
+                            <button onClick={() => window.scrollTo(50, 500)} className='payment-btn' type='submit'>Confirm Order</button>
                         </div>
                     )}
+                    </>
+                  )}
+                   
                 </form>
-              
+              {orderConfirmed && (
+                   <div className='shipping-details'>
+                 <h2>Confirm Shipping Details</h2>
+                   <div className="shipping-details-address">
+                     <p><strong>Address :</strong>{shippingData?.name}, {shippingData?.address}</p>
+                     <p> {shippingData?.city} {shippingData?.zip}</p>
+                   </div>
+                    <p><strong>Phone :</strong> {shippingData?.phone}</p>
+                 <hr/>
+                 
+                 <p><strong>Subtotal :</strong>${totalAmount}</p>
+                 <p><strong>Shipping :</strong>{shippingData?.shippingMethod?.name} ( ${shippingData?.shippingMethod?.price}) (Delivered in {shippingData?.shippingMethod?.deliveryTime})</p>
+                 {discountPercentage > 0 && (
+                    <p style={{color:'green'}}>
+                        <strong>Discount ({discountPercentage}%):</strong>-${discountAmount}</p>
+                 )}
+                 <hr/>
+                 <p className='total-shipping-price'><strong>Total :</strong>${finalAmount}</p>
+
+                  <button onClick={handleConfirmOrder} className='payment-btn'>Confirm Order</button>
+                </div>
+              )}
             </div>
         </div>
     )

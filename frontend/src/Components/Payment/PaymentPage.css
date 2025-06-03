@@ -78,3 +78,118 @@ form {
     grid-column: span 1;
   }
 }
+/* Add these styles to your existing PaymentPage.css file */
+
+.shipping-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.shipping-option {
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.shipping-option:hover {
+  border-color: #d1d5db;
+  background-color: #f9fafb;
+}
+
+.shipping-option input[type="radio"] {
+  margin-right: 12px;
+  cursor: pointer;
+}
+
+.shipping-option input[type="radio"]:checked + .shipping-label {
+  color: #2563eb;
+}
+
+.shipping-option:has(input[type="radio"]:checked) {
+  border-color: #2563eb;
+  background-color: #eff6ff;
+}
+
+.shipping-label {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+}
+
+.shipping-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.shipping-name {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.shipping-price {
+  font-weight: 700;
+  font-size: 18px;
+  color: #059669;
+}
+
+.shipping-details {
+  text-align: right;
+}
+
+.shipping-time {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 4px;
+}
+
+.shipping-description {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.shipping-summary {
+  background-color: #f3f4f6;
+  padding: 16px;
+  border-radius: 8px;
+  margin-top: 16px;
+  border-left: 4px solid #2563eb;
+}
+
+.shipping-summary h3 {
+  margin: 0 0 12px 0;
+  color: #1f2937;
+  font-size: 18px;
+}
+
+.shipping-summary p {
+  margin: 6px 0;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+/* Responsive design for mobile */
+@media (max-width: 768px) {
+  .shipping-label {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .shipping-info {
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .shipping-details {
+    text-align: left;
+    width: 100%;
+  }
+}

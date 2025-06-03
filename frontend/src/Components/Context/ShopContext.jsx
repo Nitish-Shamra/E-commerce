@@ -47,9 +47,11 @@ export const ShopContext = createContext(null);
       return totalItem;
     }
 
+    const clearCart = () =>{
+      setCartItems(getDefaultCart());
+    }
 
-
-    const contextValue = {all_product, cartItems, addToCart, removeFromCart, getTotalCartAmount, getTotalCartItems};
+    const contextValue = {all_product, cartItems, addToCart, removeFromCart, getTotalCartAmount, getTotalCartItems, clearCart};
 
     return (
         <ShopContext.Provider value={contextValue}>
