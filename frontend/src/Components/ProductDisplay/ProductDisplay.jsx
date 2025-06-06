@@ -1,13 +1,31 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import './ProductDisplay.css'
 import star_icon from '../assets/star_icon.png'
 import star_dull_icon from '../assets/star_dull_icon.png'
 import { ShopContext } from '../Context/ShopContext';
+import InnerImageZoom from 'custom-react-inner-image-zoom';
+import 'custom-react-inner-image-zoom/lib/InnerImageZoom/styles.css';
+
+
 
 function ProductDisplay(props) {
     const {product} = props;
     const {addToCart} = useContext(ShopContext);
+    const [selectedSize, setSelectedSize] = useState('S')
 
+    const basePrice = product.new_price;
+    const [selectedPrice, setSelectedPrice] = useState(basePrice);
+
+
+    const handleAddToCart = () =>{
+      
+          if(!selectedSize){
+            alert("Please select a size");
+            return;
+          }
+          addToCart(product.id);
+          alert("Product added to cart");
+    }
 
   return (
     <div className='productdisplay'>
@@ -19,8 +37,19 @@ function ProductDisplay(props) {
           <img src={product.image} alt="" />
         </div>
         <div className="productdisplay-image">
-          <img className='productdisplay-main-img' src={product.image} alt="" />
-         </div>
+          <InnerImageZoom
+            src={product.image}
+            zoomSrc={product.image}
+            alt="Product Image"
+            className='productdisplay-main-img'
+            zoomType="hover"
+            hideHint={true}
+            zoomScale={2.0}
+            height={400}
+            width={400}
+          />
+       </div>
+
       </div>
       
       <div className="productdisplay-right">
@@ -45,14 +74,18 @@ function ProductDisplay(props) {
         <div className="productdisplay-right-size">
             <h1>Select Size</h1>
             <div className="productdisplay-right-sizes">
-                <div>S</div>
-                <div>M</div>
-                <div>L</div>
-                <div>XL</div>
-                <div>XXL</div>
+               {['S', 'M', 'L', 'XL', 'XXL'].map(size => (
+                <div
+                  key={size}
+                  className={`size-box ${selectedSize === size ? 'active' : ''}`}
+                  onClick={() => setSelectedSize(size)}
+               >
+                 {size}
+            </div>
+               ))}
             </div>
         </div>
-        <button onClick={()=>{addToCart(product.id)}}>ADD TO CART</button>
+        <button onClick={handleAddToCart}>ADD TO CART</button>
         <p className='productdisplay-right-category'><span>Category :</span>Women, Tshirt, Crop Top</p>
         <p className='productdisplay-right-category'><span>Tags :</span>Modern, Latest,</p>
       </div>

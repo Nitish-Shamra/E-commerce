@@ -7,7 +7,7 @@ export const ShopContext = createContext(null);
   const getDefaultCart = ()=> {
     let cart = {};
     for (let index = 0; index < all_product.length + 1; index++) {
-          cart[index] = 0;
+          cart[index] = 0; // Initialize each product's quantity to 0
       
     }
     return cart;
@@ -17,10 +17,27 @@ export const ShopContext = createContext(null);
 
     const [cartItems, setCartItems] = useState(getDefaultCart());
 
-    const addToCart = (itemId) => {
-      setCartItems((prev)=>({...prev,[itemId]:prev[itemId]+1}))
-      console.log(cartItems);
-    }
+    //   const getPriceBySize = (basePrice, size) =>{
+        
+    //  const sizePriceMap = {
+    //         S: 0,
+    //         M: 5,
+    //         L: 7,
+    //         XL:10,
+    //        XXL: 13
+    //     };
+    //     const finalPrice = basePrice + (sizePriceMap[size])
+    //     return finalPrice || 0 ;
+    //     }
+        
+    const addToCart = (itemId) => {  
+      setCartItems((prev) => {
+        const newCart = {...prev, [itemId]:prev[itemId]+1}
+        console.log(newCart);
+        return newCart;
+      })
+       
+    }                                                                     
      const removeFromCart = (itemId) => {
       setCartItems((prev)=>({...prev, [itemId]:prev[itemId]-1}))
     }
@@ -50,6 +67,8 @@ export const ShopContext = createContext(null);
     const clearCart = () =>{
       setCartItems(getDefaultCart());
     }
+
+     
 
     const contextValue = {all_product, cartItems, addToCart, removeFromCart, getTotalCartAmount, getTotalCartItems, clearCart};
 

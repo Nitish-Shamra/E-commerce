@@ -69,7 +69,24 @@
     border: 1px solid #ebebeb;
     border-radius: 3px;
     cursor: pointer;
-}.productdisplay-right button{
+}
+.size-box {
+  border: 1px solid #ccc;
+  padding: 8px 16px;
+  margin: 4px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: 0.2s;
+}
+
+.size-box:hover,
+.size-box.active {
+  background-color: rgb(84, 78, 78);
+  color: white;
+}
+
+
+.productdisplay-right button{
     padding: 13px 25px;
     width: 160px;
     font-size: 15px;
