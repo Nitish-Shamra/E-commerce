@@ -7,7 +7,8 @@ import remove_icon from '../assets/cart_cross_icon.png'
 
 
 function CartItems() {
-    const {all_product, cartItems, removeFromCart, getTotalCartAmount} = useContext(ShopContext);
+    const {all_product, cartItems, removeFromCart, getTotalCartAmount, getCartBreakdown} = useContext(ShopContext);
+    const { subtotal, tax, total } = getCartBreakdown();
     const navigate = useNavigate();
     const handlePayment = () => {
         if (getTotalCartAmount() > 0) {
@@ -51,7 +52,12 @@ function CartItems() {
             <div>
                 <div className="cartitem-total-item">
                     <p>Subtotal</p>
-                    <p>${getTotalCartAmount()}</p>
+                    <p>${subtotal}</p>
+                </div>
+                <hr/>
+                  <div className="cartitem-total-item">
+                    <p>Tax(12%)</p>
+                    <p>${tax}</p>
                 </div>
                 <hr/>
                 
@@ -62,7 +68,7 @@ function CartItems() {
                     <hr/>
                 <div className="cartitem-total-item">
                     <h3>Total</h3>
-                    <h3>${getTotalCartAmount()}</h3>
+                    <h3>${total}</h3>
                 </div>
             </div>
 

@@ -21,7 +21,7 @@ function ProductDisplay(props) {
       
           if(!selectedSize){
             alert("Please select a size");
-            return;
+            return; 
           }
           addToCart(product.id);
           alert("Product added to cart");

@@ -4,7 +4,8 @@ import { ShopContext } from '../Context/ShopContext';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 function PaymentDetails() {
-    const { getTotalCartAmount, clearCart } = useContext(ShopContext);
+    const { getTotalCartAmount, clearCart, getCartBreakdown } = useContext(ShopContext);
+    const { subtotal, tax, total } = getCartBreakdown();
     const navigate = useNavigate();
 
     const location = useLocation();
@@ -56,7 +57,7 @@ function PaymentDetails() {
         }
     }
 
-    const totalAmount = getTotalCartAmount();
+    const totalAmount = total || getTotalCartAmount();
     const discountPercentage = getPaymentDiscount(selectMethod);
     const discountAmount = (totalAmount* discountPercentage) / 100;
     const finalAmount = totalAmount - discountAmount  + (shippingData?.shippingMethod?.price || 0);
@@ -172,7 +173,7 @@ function PaymentDetails() {
                                 />
                             </div>
                             
-                            <button onClick={() => window.scrollTo(50, 500)} className='payment-btn' type='submit'>Confirm Payment</button>
+                            <button onClick={() => window.scrollTo(50, 500)} className='payment-btn' type='submit'>Confirm Payment{finalAmount > 0 && ` ($${finalAmount})`}</button>
                         </div>
                     )}
 
@@ -185,7 +186,7 @@ function PaymentDetails() {
                                 onChange={(e) => setFormData({ ...formData, upiId: e.target.value })} 
                                 required
                             />
-                            <button onClick={() => window.scrollTo(50, 500)} className='payment-btn' type='submit'>Confirm Payment</button>
+                            <button onClick={() => window.scrollTo(50, 500)} className='payment-btn' type='submit'>Confirm Payment{finalAmount > 0 && ` ($${finalAmount.toFixed(2)})`}</button>
                         </div>
                     )}
 
@@ -212,14 +213,14 @@ function PaymentDetails() {
                                 onChange={(e) => setFormData({ ...formData, accountHolderName: e.target.value })} 
                                 required
                             />
-                            <button onClick={() => window.scrollTo(50, 500)} className='payment-btn' type='submit'>Confirm Payment</button>
+                            <button onClick={() => window.scrollTo(50, 500)} className='payment-btn' type='submit'>Confirm Payment{finalAmount > 0 && ` ($${finalAmount.toFixed(2)})`}</button>
                         </div>
                     )}
 
                     {selectMethod === 'cod' && (
                         <div className="paymentmethod-cod">
                             <p>Cash on Delivery selected</p>
-                            <button onClick={() => window.scrollTo(50, 500)} className='payment-btn' type='submit'>Confirm Order</button>
+                            <button onClick={() => window.scrollTo(50, 500)} className='payment-btn' type='submit'>Confirm Order{finalAmount > 0 && ` ($${finalAmount.toFixed(2)})`}</button>
                         </div>
                     )}
                     </>
@@ -227,25 +228,50 @@ function PaymentDetails() {
                    
                 </form>
               {orderConfirmed && (
-                   <div className='shipping-details'>
-                 <h2>Confirm Shipping Details</h2>
+                <div className='shipping-details'>
+                     <h2> Order Details</h2>
                    <div className="shipping-details-address">
-                     <p><strong>Address :</strong>{shippingData?.name}, {shippingData?.address}</p>
-                     <p> {shippingData?.city} {shippingData?.zip}</p>
-                   </div>
+                     <p><strong>Address :</strong>{shippingData?.name}, {shippingData?.address} ,
+                     {shippingData?.city} {shippingData?.zip}</p>
+                    </div>
+                   <div className="shipping-details-address">
                     <p><strong>Phone :</strong> {shippingData?.phone}</p>
-                 <hr/>
-                 
-                 <p><strong>Subtotal :</strong>${totalAmount}</p>
-                 <p><strong>Shipping :</strong>{shippingData?.shippingMethod?.name} ( ${shippingData?.shippingMethod?.price}) (Delivered in {shippingData?.shippingMethod?.deliveryTime})</p>
-                 {discountPercentage > 0 && (
-                    <p style={{color:'green'}}>
-                        <strong>Discount ({discountPercentage}%):</strong>-${discountAmount}</p>
-                 )}
-                 <hr/>
-                 <p className='total-shipping-price'><strong>Total :</strong>${finalAmount}</p>
-
-                  <button onClick={handleConfirmOrder} className='payment-btn'>Confirm Order</button>
+                 </div>
+                 <div className="shipping-details-address">
+                     <p>
+                        <strong>Shipping Method :</strong> {shippingData?.shippingMethod?.name}  (Delivered in {shippingData?.shippingMethod?.deliveryTime})
+                     </p>
+                 </div>
+                  <div className="shipping-details-method">
+                     <p>
+                        <strong>Payment Method :</strong> {selectMethod}
+                     </p>
+                 </div>
+                   <hr/>
+                  <div className="shipping-details-total">
+                    <p>Subtotal</p>
+                    <p>${totalAmount}</p>
+                </div>
+                <hr/>
+                <div className="shipping-details-total">
+                    <p>Shipping</p>
+                    <p> ${shippingData?.shippingMethod?.price}</p>
+                </div>
+                <hr/>
+                {discountPercentage > 0 && (
+                 <div className="shipping-details-total">
+                    <p style={{color:'green'}}>Discount ({discountPercentage}%)</p>
+                    <p style={{color:'green'}}>-${discountAmount}</p>
+                </div>
+                )}
+                <hr/>
+                <div className="shipping-details-total">
+                    <p><span>Total</span></p>
+                    <p><span>${finalAmount.toFixed(2)}</span></p>
+                </div>
+                <hr/>
+                
+                  <button onClick={handleConfirmOrder} className='payment-btn'>Continue Shopping</button>
                 </div>
               )}
             </div>

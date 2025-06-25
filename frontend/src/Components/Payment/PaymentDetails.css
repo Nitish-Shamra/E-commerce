@@ -1,28 +1,45 @@
 /* PaymentDetails-Dropdown.css */
 .shipping-details{
-  max-width: 800px;
   margin: 80px 100px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 5px;
+   flex: 1;
+   display: flex;
+   flex-direction: column;
+  
 }
 .shipping-details h2{
+  display: flex;
   color: #495057;
   margin-bottom: 15px;
 }
-.shipping-details strong{
-  color: #495057;
-  margin: 3px;
- 
-}
-.total-shipping-price{
-  font-size: 22px;
-  font-weight: 600;
-}
+
 .shipping-details-address{
-  display: flex;
-  gap: 8px;
+   display: flex;
+    justify-content: space-between;
+    padding: 5px 0px;
+}
+.shipping-details-method{
+   display: flex;
+    justify-content: space-between;
+    padding: 5px 0px;
+    margin-bottom: 10px;
+}
+
+.shipping-details-total{
+   display: flex;
+    justify-content: space-between;
+    padding: 15px 0px;
+    max-width: 280px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+.shipping-details-total span{
+  font-size: 21px;
+  color: #181616;
+  font-weight: 700;
+}
+.shipping-details hr{
+  width: 300px;
 }
 .confirm-order-btn{
   height: 35px;

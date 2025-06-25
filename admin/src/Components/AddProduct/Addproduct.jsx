@@ -10,7 +10,7 @@ function Addproduct() {
     const [productDetail, setProductDetail] = useState({
         name: '',
         old_price: '',
-        offer_price: '',
+        new_price: '',
         category: 'women',
         image: ''
     });
@@ -20,7 +20,41 @@ function Addproduct() {
      }
      const changeHandler = (e) => {
          setProductDetail({ ...productDetail, [e.target.name]: e.target.value })
+     };
+
+     const Add_Product = async ()=>{
+        console.log(productDetail);
+        let responseData;
+        let product = productDetail;
+
+        let formData = new FormData()
+        formData.append('product', image);
+
+        await fetch('http://localhost:4000/upload', {
+            method: 'POST',
+            headers: {
+                Accept:'application/json',
+            },
+            body: formData,
+        }).then((resp)=> resp.json()).then((data)=> {responseData = data})
+
+        if(responseData.success)
+        {
+          product.image= responseData.image_url;
+          console.log(product);
+          await fetch('http://localhost:4000/addproduct', {
+            method:'POST',
+            headers:{
+                Accept:'application/json',
+                'Content-Type':'application/json',
+            },
+            body:JSON.stringify(product),
+          }).then((resp)=>resp.json()).then((data)=>{
+             data.success?alert('Product Added'):alert('Failed')
+          })
+        }
      }
+
 
   return (
     <div className='add-product'>
@@ -35,7 +69,7 @@ function Addproduct() {
             </div>
             <div className="addproduct-itemfield">
                 <p>Offer Price</p>
-                <input onChange={changeHandler} type="text" value={productDetail.offer_price} name='offer_price' placeholder='Type here' />
+                <input onChange={changeHandler} type="text" value={productDetail.new_price} name='new_price' placeholder='Type here' />
             </div>
         </div>
         <div className="addproduct-itemfield">
@@ -52,7 +86,7 @@ function Addproduct() {
             </label>
             <input onChange={imageHandler} type="file" name='image' id='file-input' hidden />
         </div>
-        <button className='addproduct-button'>Add</button>
+        <button onClick={()=>{Add_Product()}} className='addproduct-button'>Add</button>
       
     </div>
   )
