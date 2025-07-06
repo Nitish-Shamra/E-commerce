@@ -10,46 +10,46 @@ A full-featured E-Commerce platform built with the MERN stack (MongoDB, Express.
 
 👤 Authentication & Authorization
 
-Secure JWT-based user login/register system
+- Secure JWT-based user login/register system
 
-Role-based access: Admin vs User
+- Role-based access: Admin vs User
 
-Protected routes (frontend & backend)
+- Protected routes (frontend & backend)
 
 🛍️ Product Management
 
-Admin Panel: Add, update, or delete products
+- Admin Panel: Add, update, or delete products
 
-Categorized by Men, Women, Kids
+- Categorized by Men, Women, Kids
 
-Products dynamically fetched from MongoDB
+- Products dynamically fetched from MongoDB
 
-Images, prices, descriptions, and category-based filtering
+- Images, prices, descriptions, and category-based filtering
 
 🛒 Shopping Cart
 
-Add/Remove items
+- Add/Remove items
 
-Quantity management
+ - Quantity management
 
-Real-time cart updates
+- Real-time cart updates
 
-Cart data persisted in MongoDB
+- Cart data persisted in MongoDB
 
 💰 Checkout System
 
-Address input form
+- Address input form
 
-Delivery options
+- Delivery options
 
-Tax & discount calculation
+- Tax & discount calculation
 
-Order summary with pricing breakdown
+- Order summary with pricing breakdown
 
 💳 Payment Simulation
-Integrated payment workflow (simulation)
+- Integrated payment workflow (simulation)
 
-Can be extended to real gateways (e.g., Razorpay, Stripe) (Upcoming)
+- Can be extended to real gateways (e.g., Razorpay, Stripe) (Upcoming)
 
 📦 Tech Stack
 Layer	Technology
@@ -61,8 +61,8 @@ Tools -	Postman, Git, GitHub, VS Code
 
 🔐 Authentication Flow
 
-  Token stored in localStorage
-  Middleware for protected APIs
+- Token stored in localStorage
+  - Middleware for protected APIs
 
 📸 Screenshots 
 
