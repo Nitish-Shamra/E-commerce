@@ -61,12 +61,14 @@ Admin dashboard-
  https://github.com/Nitish-Shamra/E-commerce/blob/main/admin/src/assets/screen%20shots/Screenshot%202025-07-06%20132455.png
 
 Product listing page & Cart & checkout-
-  
+    
+https://github.com/Nitish-Shamra/E-commerce/blob/main/frontend/src/Components/assets/screen%20shots/Screenshot%202025-07-06%20132341.png
+https://github.com/Nitish-Shamra/E-commerce/blob/main/frontend/src/Components/assets/screen%20shots/Screenshot%202025-07-06%20132247.png
+https://github.com/Nitish-Shamra/E-commerce/blob/main/frontend/src/Components/assets/screen%20shots/Screenshot%202025-07-06%20132209.png
+https://github.com/Nitish-Shamra/E-commerce/blob/main/frontend/src/Components/assets/screen%20shots/Screenshot%202025-07-06%20132020.png
+https://github.com/Nitish-Shamra/E-commerce/blob/main/frontend/src/Components/assets/screen%20shots/Screenshot%202025-07-06%20131924.png
+https://github.com/Nitish-Shamra/E-commerce/blob/main/frontend/src/Components/assets/screen%20shots/Screenshot%202025-07-06%20131848.png
 
 
-
-
-
-
-
-
+🙋‍♂️ Author
+Nitish Kumar
