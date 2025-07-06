@@ -56,5 +56,5 @@ Tools -	Postman, Git, GitHub, VS Code
 
 📸 Screenshots 
 Admin dashboard- https://github.com/Nitish-Shamra/E-commerce/tree/main/admin/src/assets/screen%20shots
-
+https://github.com/Nitish-Shamra/E-commerce/blob/main/admin/src/assets/screen%20shots/Screenshot%202025-07-06%20132455.png
 
