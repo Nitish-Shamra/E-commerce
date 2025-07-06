@@ -1,9 +1,15 @@
 🛒 E-Commerce Web Application – MERN Stack
+
+
 🔍 Overview
+
+
 A full-featured E-Commerce platform built with the MERN stack (MongoDB, Express.js, React.js, Node.js). This application supports complete admin control, secure user authentication, dynamic product management, cart handling, and a responsive shopping experience with real-time backend data.
 
 🚀 Features
+
 👤 Authentication & Authorization
+
 Secure JWT-based user login/register system
 
 Role-based access: Admin vs User
@@ -11,6 +17,7 @@ Role-based access: Admin vs User
 Protected routes (frontend & backend)
 
 🛍️ Product Management
+
 Admin Panel: Add, update, or delete products
 
 Categorized by Men, Women, Kids
@@ -20,6 +27,7 @@ Products dynamically fetched from MongoDB
 Images, prices, descriptions, and category-based filtering
 
 🛒 Shopping Cart
+
 Add/Remove items
 
 Quantity management
@@ -29,6 +37,7 @@ Real-time cart updates
 Cart data persisted in MongoDB
 
 💰 Checkout System
+
 Address input form
 
 Delivery options
@@ -51,6 +60,7 @@ Authentication -	JWT
 Tools -	Postman, Git, GitHub, VS Code
 
 🔐 Authentication Flow
+
   Token stored in localStorage
   Middleware for protected APIs
 
@@ -58,15 +68,23 @@ Tools -	Postman, Git, GitHub, VS Code
 
 Admin dashboard- 
  https://github.com/Nitish-Shamra/E-commerce/blob/main/admin/src/assets/screen%20shots/Screenshot%202025-07-06%20132455.png
+ 
  https://github.com/Nitish-Shamra/E-commerce/blob/main/admin/src/assets/screen%20shots/Screenshot%202025-07-06%20132455.png
 
 Product listing page & Cart & checkout-
     
 https://github.com/Nitish-Shamra/E-commerce/blob/main/frontend/src/Components/assets/screen%20shots/Screenshot%202025-07-06%20132341.png
+
 https://github.com/Nitish-Shamra/E-commerce/blob/main/frontend/src/Components/assets/screen%20shots/Screenshot%202025-07-06%20132247.png
+
 https://github.com/Nitish-Shamra/E-commerce/blob/main/frontend/src/Components/assets/screen%20shots/Screenshot%202025-07-06%20132209.png
+
+
 https://github.com/Nitish-Shamra/E-commerce/blob/main/frontend/src/Components/assets/screen%20shots/Screenshot%202025-07-06%20132020.png
+
 https://github.com/Nitish-Shamra/E-commerce/blob/main/frontend/src/Components/assets/screen%20shots/Screenshot%202025-07-06%20131924.png
+
+
 https://github.com/Nitish-Shamra/E-commerce/blob/main/frontend/src/Components/assets/screen%20shots/Screenshot%202025-07-06%20131848.png
 
 
