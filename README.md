@@ -52,17 +52,23 @@ A full-featured E-Commerce platform built with the MERN stack (MongoDB, Express.
 - Can be extended to real gateways (e.g., Razorpay, Stripe) (Upcoming)
 
 📦 Tech Stack
+
 Layer	Technology
+
 Frontend -	React.js, React Router, Tailwind CSS
+
 Backend -	Node.js, Express.js
+
 Database -	MongoDB, Mongoose
+
 Authentication -	JWT
+
 Tools -	Postman, Git, GitHub, VS Code
 
 🔐 Authentication Flow
 
 - Token stored in localStorage
-  - Middleware for protected APIs
+- Middleware for protected APIs
 
 📸 Screenshots 
 
