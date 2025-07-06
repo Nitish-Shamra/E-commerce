@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 import './Addproduct.css'
 import upload_area from '../../Assets/upload_area.svg'
 
-//add fuction to button so that it can add product to the database
-// and show it in the list product page
+
 
 function Addproduct() {
     const [image, setImage] = useState(false);

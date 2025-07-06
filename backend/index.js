@@ -8,8 +8,6 @@ const path = require('path');
 const cors = require('cors');
 const { type } = require('os');
 const { ppid } = require('process');
-const { log } = require('console');
-
 
 
 
@@ -36,7 +34,7 @@ const upload = multer({ storage:storage});
 
 //creating endpoint for upload images 
 
-app.use('/images', express.static('upload/images'))
+app.use('/images', express.static('upload/images'));
 
 app.post('/upload',upload.single('product'), (req, res)=>{
   res.json({
