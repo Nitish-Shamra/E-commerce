@@ -54,6 +54,7 @@ Tools -	Postman, Git, GitHub, VS Code
   Token stored in localStorage
   Middleware for protected APIs
 
-
+📸 Screenshots 
+Admin dashboard- https://github.com/Nitish-Shamra/E-commerce/tree/main/admin/src/assets/screen%20shots
 
 
