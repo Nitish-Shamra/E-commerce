@@ -55,6 +55,18 @@ Tools -	Postman, Git, GitHub, VS Code
   Middleware for protected APIs
 
 📸 Screenshots 
-Admin dashboard- https://github.com/Nitish-Shamra/E-commerce/tree/main/admin/src/assets/screen%20shots
-https://github.com/Nitish-Shamra/E-commerce/blob/main/admin/src/assets/screen%20shots/Screenshot%202025-07-06%20132455.png
+
+Admin dashboard- 
+ https://github.com/Nitish-Shamra/E-commerce/blob/main/admin/src/assets/screen%20shots/Screenshot%202025-07-06%20132455.png
+ https://github.com/Nitish-Shamra/E-commerce/blob/main/admin/src/assets/screen%20shots/Screenshot%202025-07-06%20132455.png
+
+Product listing page & Cart & checkout-
+  
+
+
+
+
+
+
+
 
